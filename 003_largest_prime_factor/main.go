@@ -14,27 +14,35 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	n := int64(600851475143)
-	for i := n / 2; i > 0; i-- {
-		if n%i == 0 {
-			// i is a factor. Find if i is prime
-			prime := true
-			for j := int64(0); j < i; j++ {
-				if i%j == 0 {
-					// not prime
-					prime = false
-					break
-				}
-			}
-			if prime {
-				fmt.Println(i)
-				return
-			}
+	largest := int64(0)
+	// Divide out all 2s
+	for n%2 == 0 {
+		n /= 2
+		fmt.Println(2)
+		largest = 2
+	}
+
+	// Divide out all other primes. Prime factors must be odd numbers less than
+	// the sqrt of N.
+	sqrtN := int64(math.Sqrt(float64(n)))
+	for i := int64(3); i < sqrtN; i += 2 {
+		for n%i == 0 {
+			n /= i
+			fmt.Println(i)
+			largest = i
 		}
 	}
-	// Largest prime factor of n is n itself
-	fmt.Println(n)
+
+	// Catch the case that the remaining factor is greater than cases so far.
+	if n > largest {
+		largest = n
+	}
+	fmt.Println(largest)
 }
