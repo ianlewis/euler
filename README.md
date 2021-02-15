@@ -1,2 +1,5 @@
 # euler
-Project Euler Solutions
+
+This repo contains my solutions to Project Euler problems.
+
+https://projecteuler.net/
