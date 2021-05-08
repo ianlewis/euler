@@ -19,8 +19,6 @@ import (
 	"math"
 )
 
-var arr = make(map[int64]bool)
-
 const num = int64(10001)
 
 func isPrime(value int64) bool {
