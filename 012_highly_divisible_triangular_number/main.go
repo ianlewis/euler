@@ -19,9 +19,6 @@ import (
 	"math"
 )
 
-// The number of divisiors to look for.
-const num = 500
-
 // numDivisors returns the number of divisors for the given number. It is
 // assumed a divisor is a natural number that divides the given number cleanly.
 func numDivisors(n int) int {
@@ -44,9 +41,11 @@ func numDivisors(n int) int {
 }
 
 func main() {
-	i := 1
+	// The number of divisiors to look for.
+	const num = 500
 
-	// t is the current triangular number. 1 is the 1st triangular number.
+	// t is the 'i'th triangular number. 1 is the 1st triangular number.
+	i := 1
 	t := 1
 	for {
 		if numDivisors(t) > num {
@@ -54,9 +53,9 @@ func main() {
 			break
 		}
 
-		i++
 		// We keep track of the current triangular number by just adding the i to
 		// the previous triangular number to save on computation.
+		i++
 		t += i
 	}
 }
